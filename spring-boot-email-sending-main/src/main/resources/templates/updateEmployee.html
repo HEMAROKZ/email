@@ -1,0 +1,145 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Update Database</title>-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--    &lt;!&ndash; Include your Base.html content here if needed &ndash;&gt;-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:style="'font-family: sans-serif; font-size: 22px; background-color: black; height: 50px; color: white'">-->
+<!--    Update Employee Details-->
+<!--</div>-->
+<!--<br><br>-->
+<!--<div class="container mt-3 text-center">-->
+<!--    <div th:if="${not #strings.isEmpty(msg)}" th:text="${msg}"></div>-->
+<!--    <h3>Update Product</h3>-->
+<!--    <fieldset>-->
+<!--        <form method="POST" name="update_user" th:action="@{/update/user}">-->
+<!--           Employee ID <input  name="employeeid" th:value="${employee.employeeid}" type="number" />-->
+<!--            Employee Name: <input name="name" th:value="${employee.name}" type="text" /><br /><br />-->
+<!--            Employee birthdate: <input name="birthdate" th:value="${employee.birthdate}" type="text" /><br /><br />-->
+<!--            Employee Email Id: <input name="email" th:value="${employee.email}" type="text" /><br /><br />-->
+<!--            Reporting Manager:<input name="reporting_manager" th:value="${employee.reporting_manager}" type="text" /><br /><br />-->
+<!--            <input value="Update employee" type="submit" />-->
+<!--        </form>-->
+<!--    </fieldset>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Database</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+          /* Header Styles */
+        header {
+          background-color: #ffffff; /* White background color */
+          color: #555; /* Text color */
+          padding: 20px 0;
+          text-align: center;
+          position: relative; /* Ensure relative positioning for absolute child elements */
+        }
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        /* Add styles for the header image */
+        #header-image {
+          position: absolute;
+          top: 10px; /* Adjust the top position as needed */
+          left: 10px; /* Adjust the right position as needed */
+           bottom:10px;
+          width: 120px; /* Adjust the image width as needed */
+          height:60px; /* Maintain the aspect ratio */
+        }
+
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+            padding: 0;
+        }
+
+   body {
+            background-image: url("/images/2175435.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        /* Container Styles */
+        div.container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        /* Form Styles */
+        form {
+            margin-top: 20px;
+        }
+
+        /* Input Styles */
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        /* Submit Button Styles */
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Result Message Styles */
+        div.container div[th:if] {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<header>
+<div>
+    <h1>Update Employee Details</h1>
+    <img src="/images/Msyslogo.jpg" alt="Image Description" id="header-image">
+    <form action="/logout" method="post" class="logout-button">
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+</div>
+</header>
+<div class="container">
+    <div th:if="${not #strings.isEmpty(msg)}" th:text="${msg}"></div>
+    <h3>Update Product</h3>
+    <form method="POST" name="update_user" th:action="@{/update/user}">
+        <div class="form-group">
+            Employee ID <input name="employeeid" th:value="${employee.employeeid}" type="text" required pattern="[0-9]+">
+        </div>
+
+        <div class="form-group">
+            Employee Name: <input name="name" th:value="${employee.name}" type="text" required pattern=".*\S+.*">
+        </div>
+        <div class="form-group">
+            Employee birthdate: <input name="birthdate" th:value="${employee.birthdate}" type="text" required pattern="^\d{4}-\d{2}-\d{2}$" title="Enter a valid date in yyyy-mm-dd format">
+        </div>
+        <div class="form-group">
+            Employee Email Id: <input name="email" th:value="${employee.email}" type="text" required pattern=".*\S+.*">
+        </div>
+        <div class="form-group">
+            Reporting Manager: <input name="reporting_manager" th:value="${employee.reporting_manager}" type="text" required pattern=".*\S+.*">
+        </div>
+        <input value="Update employee" type="submit" />
+    </form>
+
+</div>
+</body>
+</html>
