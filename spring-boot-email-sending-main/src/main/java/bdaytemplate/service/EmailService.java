@@ -35,8 +35,8 @@ public class EmailService {
 		List<EmailRequest> to = employeeDAOImp.findAllWithBirthday();
 
 		for (EmailRequest value : to) {
-			String birthdayImagePath = "src/main/resources/brthday.jpg";
-			String secondImagePath = "src/main/resources/brthday.jpg"; // Provide the path to your second image
+			String birthdayImagePath = "brthday.jpg";
+			String secondImagePath = "Msyslogo.jpg"; // Provide the path to your second image
 			String reportingManagerEmail = value.getReporting_manager();
 			String cc = "rhemanth171297@gmail.com";
 			String bcc= value.getReporting_manager();; // Add the BCC recipient's email address
