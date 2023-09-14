@@ -7,6 +7,10 @@ WORKDIR /app
 # Copy the Spring Boot application JAR file into the container
 COPY target/SpringBootEmailExamples-1.0.jar app.jar
 
+# Copy the image file into the container
+COPY src/main/resources/brthday.jpg brthday.jpg
+COPY src/main/resources/Msyslogo.jpg Msyslogo.jpg
+
 # Expose the port on which your Spring Boot application will run (adjust as needed)
 EXPOSE 8080
 
